@@ -2,4 +2,11 @@
 Get more points to reach unlock new things!
 Get to the Endgame to win the game!
 
-# Current Version: Indev v0.0.0 - Build 0
+# Current Version: Pre-Indev
+Released on October 13th 2024
+
+# What's new on Pre-Indev:
+###### Nothing
+
+Previous versions:
+None as of yet
