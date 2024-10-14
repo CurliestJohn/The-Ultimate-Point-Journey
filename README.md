@@ -8,5 +8,5 @@ Released on October 13th 2024
 # What's new on Pre-Indev:
 ###### Nothing
 
-Previous versions:
+# Previous versions:
 None as of yet
