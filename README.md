@@ -1,6 +1,6 @@
 # The-Ultimate-Point-Journey
 Get more points to reach unlock new things!
-Get to the Endgame to win the game!
+Will you get enough points to reach the endgame?
 
 # Current version: Pre-Indev
 Released on October 13th 2024
