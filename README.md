@@ -10,3 +10,12 @@ Released on October 13th 2024
 
 # Previous versions:
 None as of yet
+
+# Current Endgame:
+0 points
+
+
+
+
+# Credits:
+CurliestJohn (owner)
