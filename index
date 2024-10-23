@@ -4,6 +4,7 @@
   <title> The Ultimate Point Journey </title>
  </head>
  <body>
-  You have 0 Point Fragments.
+  <div>
+   <p>You have 0 Point Fragments.</p>
  </body>
 </html>
