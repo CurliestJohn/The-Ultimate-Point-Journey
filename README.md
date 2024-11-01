@@ -5,7 +5,7 @@ Will you get enough points to reach the endgame?
 # Current version:
 Indev v0.0.0 • Build 0 // Released on November 1st 2024
 
-# What's new on Pre-Indev:
+# What's new on Indev v0.0.0 • Build 0:
 Added text in which detects how many Point Fragments you have.
 
 # Previous versions:
