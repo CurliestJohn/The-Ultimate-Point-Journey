@@ -7,14 +7,16 @@ Will you get enough points to reach the endgame?
 # Current endgame:
 * 0 points
 
-# Current version: Indev v0.0.0 • Build 3
-Indev v0.0.0 • Build 3 // Released on November 3rd, 2024
+# Current version: Indev v0.0.0 • Build 4
+Indev v0.0.0 • Build 4 // Released on November 3rd, 2024
 
-# What's new on Indev v0.0.0 • Build 3:
+# What's new on Indev v0.0.0 • Build 4:
 Check the changelog at the bottom-right corner!
-* 💰 Points!
-* 👁️ Footer revamps!
-* 📖 Help menu!
+* 👁️ Black theme!
+* 🖼️ Icons!
+* 📖 Tabs!
+* ⏳ Loading screen!
+* 📁 Organized!
 
 # Credits:
 * [CurliestJohn](https://github.com/CurliestJohn) (owner)

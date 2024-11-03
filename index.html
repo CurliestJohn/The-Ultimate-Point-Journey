@@ -2,21 +2,34 @@
 	<head>
 		<title>The Ultimate Point Journey</title>
 		<link rel="stylesheet" type="text/css" href="css/css.css">
+
+		<script type="text/javascript" src="js/init.js"></script>
 		<script type="text/javascript" src="js/element.js"></script>
+		<script type="text/javascript" src="js/tabs.js"></script>
 		<script type="text/javascript" src="js/pages.js"></script>
 	</head>
-	<body>
-		<div>
-			<p style='font-size: 24px'>You have <b>0</b> Points.</p>
-			<p>You have <b>0</b> Point Fragments.</p>
-			<hr>
-		</div>
-		<div id="footer_box" style='display: none'>
-		</div>
-		<div id="footer">
-			<a href="https://github.com/CurliestJohn/The-Ultimate-Point-Journey" target="_newtab">Repo</a> |
-			<a onclick="PAGES.open('footer_box', 'help')">Help</a> |
-			<a onclick="PAGES.open('footer_box', 'changelog')">Changelog</a>
+	<body onload="init()">
+		<div id="loading">Loading...</div>
+		<div id="game" style='display: none'>
+			<!-- HEADER -->
+			<div id="footer_box" style='display: none'></div>
+			<div id="footer">
+				<a href="https://github.com/CurliestJohn/The-Ultimate-Point-Journey" target="_newtab">Repo</a> |
+				<a onclick="PAGES.open('footer_box', 'help')">Help</a> |
+				<a onclick="PAGES.open('footer_box', 'changelog')">Changelog</a>
+			</div>
+
+			<!-- TOP -->
+			<p style='font-size: 30px'><img src="img/points.png"></img> <b>0</b> Points (+0/s)</p>
+			<div id="tab_btns"></div>
+
+			<!-- TABS -->
+			<div id="tab_frag" style='display: none'>
+				<p><img src="img/point_fragments.png"></img> <b>0</b> Point Fragments</p>
+			</div>
+			<div id="tab_test" style='display: none'>
+				This was a test. Thanks for experimenting. See you at 0.0.1.
+			</div>
 		</div>
 	</body>
 </html>

@@ -1,3 +1,30 @@
+* {
+	font-size: 16px;
+	color: white
+}
+
+body {
+	background: black
+}
+
+button {
+	padding: 8px;
+	background: black;
+	border: 2px solid white;
+	border-radius: 0;
+	cursor: pointer
+}
+
+a {
+	color: #07f;
+	cursor: pointer
+}
+
+hr {
+	border: 1px solid white;
+}
+
+/* HEADER */
 #footer {
 	position: fixed;
 	right: 8px;
@@ -8,25 +35,38 @@
 #footer_box {
 	position: fixed;
 	right: 8px;
-	top: 24px;
+	top: 30px;
 
 	width: 240px;
 	height: 300px;
 
 	overflow-y: auto;
-	background: white;
-	border: 2px solid black;
+	background: black;
+	border: 2px solid white;
 }
 
-a {
-	color: #07f;
-	cursor: pointer
+/* CURRENCIES */
+p {
+	& > b {
+		font-size: 1.5em
+	}
+	& > img {
+		font-size: 1em;
+		height: 1em
+	}
 }
 
-p > b {
-	font-size: 1.5em
-}
-
-hr {
-	border: 1px solid black;
+/* TABS */
+#tab_btns {
+	& > * {
+		margin-top: 0;
+	}
+	& > button {
+		border-bottom: 0px solid
+	}
+	& > button.active {
+		padding-top: 12px;
+		background: white;
+		color: black
+	}
 }

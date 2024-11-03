@@ -11,6 +11,10 @@ function switchEl(id, bool) {
 	el(id).style.display = bool ? "" : "none"
 }
 
+function setEl(id, className) {
+	el(id).className = className
+}
+
 function showEl(id) {
 	switchEl(id, true)
 }
