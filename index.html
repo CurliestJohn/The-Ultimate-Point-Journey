@@ -3,25 +3,20 @@
 		<title>The Ultimate Point Journey</title>
 		<link rel="stylesheet" type="text/css" href="css/css.css">
 		<script type="text/javascript" src="js/element.js"></script>
+		<script type="text/javascript" src="js/pages.js"></script>
 	</head>
 	<body>
 		<div>
-			<p>You have	<b>0</b> Point Fragments.</p>
+			<p style='font-size: 24px'>You have <b>0</b> Points.</p>
+			<p>You have <b>0</b> Point Fragments.</p>
 			<hr>
 		</div>
 		<div id="footer_box" style='display: none'>
-			<!-- CHANGELOG ONLY -->
-			<h2>
-				<u>November 1st, 2024</u><br>
-				v0.0.0 - Build 1
-			</h2>
-			- 📝 Changelog!<br>
-			- 👁️ Footer!<br>
-			- ⚙️ Technical changes!<br>
 		</div>
 		<div id="footer">
 			<a href="https://github.com/CurliestJohn/The-Ultimate-Point-Journey" target="_newtab">Repo</a> |
-			<a onclick="toggleEl('footer_box')">Changelog</a>
+			<a onclick="PAGES.open('footer_box', 'help')">Help</a> |
+			<a onclick="PAGES.open('footer_box', 'changelog')">Changelog</a>
 		</div>
 	</body>
 </html>

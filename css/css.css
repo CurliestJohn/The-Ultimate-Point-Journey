@@ -1,23 +1,32 @@
 #footer {
 	position: fixed;
-	right: 0;
-	bottom: 0;
-	font-size: 10px
+	right: 8px;
+	top: 8px;
+	font-size: 12px
 }
 
 #footer_box {
 	position: fixed;
-	right: 0;
-	bottom: 10px;
+	right: 8px;
+	top: 24px;
 
 	width: 240px;
 	height: 300px;
 
 	overflow-y: auto;
-	border: 1px solid black;
+	background: white;
+	border: 2px solid black;
 }
 
 a {
 	color: #07f;
 	cursor: pointer
+}
+
+p > b {
+	font-size: 1.5em
+}
+
+hr {
+	border: 1px solid black;
 }
