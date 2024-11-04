@@ -5,8 +5,11 @@
 
 		<script type="text/javascript" src="js/init.js"></script>
 		<script type="text/javascript" src="js/element.js"></script>
+		<script type="text/javascript" src="js/resources.js"></script>
+		<script type="text/javascript" src="js/upgrades.js"></script>
 		<script type="text/javascript" src="js/tabs.js"></script>
 		<script type="text/javascript" src="js/pages.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
 	</head>
 	<body onload="init()">
 		<div id="loading">Loading...</div>
@@ -20,15 +23,29 @@
 			</div>
 
 			<!-- TOP -->
-			<p style='font-size: 30px'><img src="img/points.png"></img> <b>0</b> Points (+0/s)</p>
+			<p style='font-size: 30px' id="curr_points"></p>
 			<div id="tab_btns"></div>
 
 			<!-- TABS -->
 			<div id="tab_frag" style='display: none'>
-				<p><img src="img/point_fragments.png"></img> <b>0</b> Point Fragments</p>
+				<p id="curr_point_fragments"></p>
+				<p id="curr_shatter_luck"></p>
+
+				<h2>Upgrades</h2>
+				<button id="upg_f1" onclick="UPG_FEATURE.buy('f1')"></button><br>
+				<button id="upg_f2" onclick="UPG_FEATURE.buy('f2')"></button><br>
+				<button id="upg_f3" onclick="UPG_FEATURE.buy('f3')"></button>
+
+				<h2>Inventory</h2>
+				<div id="inv_info"></div>
+				<p id="curr_glass_fragments"></p>
+				<p id="curr_glass_flux"></p>
 			</div>
-			<div id="tab_test" style='display: none'>
-				This was a test. Thanks for experimenting. See you at 0.0.1.
+			<div id="tab_flux" style='display: none'>
+				Soon... Hint: Something to do with time.
+			</div>
+			<div id="tab_opt" style='display: none'>
+				Soon...
 			</div>
 		</div>
 	</body>

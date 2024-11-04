@@ -20,13 +20,29 @@ let TABS = {
 
 	tabs: {
 		frag: {
-			name: "Fragmentation",
+			name: "Fragment",
+			unl: () => true,
+			update() {
+				RES_DISP.update("point_fragments")
+				RES_DISP.update("glass_fragments")
+				RES_DISP.update("glass_flux")
+				RES_DISP.update("shatter_luck")
+
+				UPG_FEATURE.disp("f1")
+				UPG_FEATURE.disp("f2")
+				UPG_FEATURE.disp("f3")
+
+				setHTML("inv_info", `There's a ${(RESOURCES.shatter_luck.value * 2).toFixed(1)}% chance to gain Glasskite.`)
+			}
+		},
+		flux: {
+			name: "Timeflux",
 			unl: () => true,
 			update() {
 			}
 		},
-		test: {
-			name: "???",
+		opt: {
+			name: "Options",
 			unl: () => true,
 			update() {
 			}

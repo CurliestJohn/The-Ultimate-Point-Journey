@@ -1,4 +1,4 @@
-* {
+*:not(h2) {
 	font-size: 16px;
 	color: white
 }
@@ -47,12 +47,25 @@ hr {
 
 /* CURRENCIES */
 p {
-	& > b {
+	& > span > b {
 		font-size: 1.5em
 	}
-	& > img {
+	& > * {
 		font-size: 1em;
 		height: 1em
+	}
+}
+
+/* UPGRADES */
+button.upg {
+	height: 120px;
+	width: 300px;
+	&.locked {
+		border-color: #733;
+		cursor: not-allowed
+	}
+	& > b {
+		font-size: 1.25em
 	}
 }
 

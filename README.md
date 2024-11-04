@@ -5,18 +5,16 @@ Will you get enough points to reach the endgame?
 [Play!](https://curliestjohn.github.io/The-Ultimate-Point-Journey/)
 
 # Current endgame:
-* 0 points
+* 5 points
 
-# Current version: Indev v0.0.0 • Build 4
-Indev v0.0.0 • Build 4 // Released on November 3rd, 2024
+# Current version: Indev v0.0.1 • Build 5
+Indev v0.0.1 • Build 5 // Released on November 3rd, 2024
 
-# What's new on Indev v0.0.0 • Build 4:
+# What's new on Indev v0.0.1 • Build 5:
 Check the changelog at the bottom-right corner!
-* 👁️ Black theme!
-* 🖼️ Icons!
-* 📖 Tabs!
-* ⏳ Loading screen!
-* 📁 Organized!
+* ⬆️ Production!
+* 💥 Fragmentation!
+* ❓ Hints for new features...
 
 # Credits:
 * [CurliestJohn](https://github.com/CurliestJohn) (owner)
