@@ -31,8 +31,6 @@ let TABS = {
 				UPG_FEATURE.disp("f1")
 				UPG_FEATURE.disp("f2")
 				UPG_FEATURE.disp("f3")
-
-				setHTML("inv_info", `There's a ${(RESOURCES.shatter_luck.value * 2).toFixed(1)}% chance to gain Glasskite.`)
 			}
 		},
 		flux: {

@@ -33,8 +33,8 @@ let UPG_FEATURE = {
 		let res = RESOURCES[upg.cost_res]
 		let cost = upg.cost(player.upgs[i] || 0)
 
-		if (res.value < cost) return
-		res.value -= cost
+		if (res.amt < cost) return
+		res.amt -= cost
 		player.upgs[i] = (player.upgs[i] || 0) + 1
 	},
 	disp(i) {
@@ -46,6 +46,6 @@ let UPG_FEATURE = {
 			Effect: ${temp.upgs[i].toFixed(1)}<br>
 			Cost: ${cost.toFixed(1)} ${RESOURCES[upg.cost_res].name}
 		`)
-		setEl("upg_" + i, RESOURCES[upg.cost_res].value < cost ? "upg locked" : "upg")
+		setEl("upg_" + i, RESOURCES[upg.cost_res].amt < cost ? "upg locked" : "upg")
 	}
 }

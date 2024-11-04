@@ -1,10 +1,10 @@
 let RESOURCES = {
 	points: {
 		name: "Points",
-		get value() {
+		get amt() {
 			return player.points
 		},
-		set value(x) {
+		set amt(x) {
 			player.points = x
 		},
 
@@ -14,10 +14,10 @@ let RESOURCES = {
 	},
 	point_fragments: {
 		name: "Point Fragments",
-		get value() {
+		get amt() {
 			return player.fragments.amt
 		},
-		set value(x) {
+		set amt(x) {
 			player.fragments.amt = x
 		},
 
@@ -27,36 +27,28 @@ let RESOURCES = {
 	},
 	glass_fragments: {
 		name: "Glasskites",
-		get value() {
+		get amt() {
 			return player.fragments.glass
 		},
-		set value(x) {
+		set amt(x) {
 			player.fragments.glass = x
-		},
-
-		production() {
-			return 0
 		}
 	},
 	glass_flux: {
 		name: "Glasskite Flux",
-		get value() {
+		get amt() {
 			return player.fragments.flux
 		},
-		set value(x) {
+		set amt(x) {
 			player.fragments.flux = x
-		},
-
-		production() {
-			return 0
 		}
 	},
 	shatter_luck: {
 		name: "Shatter Luck",
-		get value() {
+		get amt() {
 			return player.fragments.luck
 		},
-		set value(x) {
+		set amt(x) {
 			player.fragments.luck = x
 		},
 
@@ -72,9 +64,12 @@ let RES_DISP = {
 	},
 	update(i) {
 		let prod = temp.production[i]
+		let frag = FRAGMENT.chances[i]
 
-		let h = `<b>${(Math.floor(RESOURCES[i].value * 100) / 100).toFixed(2)}</b> ${RESOURCES[i].name}`
+		let h = `<b>${((RESOURCES[i].amt * 100) / 100).toFixed(2)}</b> ${RESOURCES[i].name}`
+		if (frag) h += ` (${Math.min(RESOURCES.shatter_luck.amt * 100 / frag, 100).toFixed(1)}%/shatter)`
 		if (prod > 0) h += ` (+${prod.toFixed(1)}/s)`
+
 		setHTML("curr_inner_" + i, h)
 	}
 }
