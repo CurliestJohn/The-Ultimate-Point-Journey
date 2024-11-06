@@ -4,7 +4,7 @@ Will you get enough points to reach the endgame?
 
 [Play!](https://curliestjohn.github.io/The-Ultimate-Point-Journey/)
 
-# Current endgame:
+# Current endgame (as of this build):
 * 5 points
 
 # Current version: Indev v0.0.1 • Build 6
