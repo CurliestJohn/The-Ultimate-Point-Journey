@@ -21,3 +21,6 @@ Check the changelog at the bottom-right corner!
 # Credits:
 * [CurliestJohn](https://github.com/CurliestJohn) (owner)
 * [aarextiaokhiao](https://github.com/aarextiaokhiao) (collaborator)
+
+# Notes:
+* This incremental game is merely inspired by VBCIE, in which was made by TCOH672. If you are confused, do not worry. This is still an incremental.
