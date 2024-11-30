@@ -1,7 +1,7 @@
 let TABS = {
 	init() {
 		let h = ``
-		for (var [i, j] of Object.entries(TABS.tabs)) h += `<button id='tab_btn_${i}' onclick='TABS.click("${i}")'>${j.name}</button> `
+		for (var [i, j] of Object.entries(TABS.tabs)) h += `<button id='tab_btn_${i}' onclick='TABS.click("${i}")' ${j.unl !== undefined ? "style='display: none'" : ""}>${j.name}</button> `
 		h += `<hr>`
 
 		setHTML("tab_btns", h)
@@ -21,27 +21,37 @@ let TABS = {
 	tabs: {
 		frag: {
 			name: "Fragment",
-			unl: () => true,
 			update() {
 				RES_DISP.update("point_fragments")
 				RES_DISP.update("glass_fragments")
-				RES_DISP.update("glass_flux")
 				RES_DISP.update("shatter_luck")
 
-				UPG_FEATURE.disp("f1")
-				UPG_FEATURE.disp("f2")
-				UPG_FEATURE.disp("f3")
+				UPG_FEATURE.dispGroup("frag")
 			}
 		},
-		flux: {
-			name: "Timeflux",
-			unl: () => true,
+		chronics: {
+			name: "Chronics",
+			update: () => CHRONICS.updateHTML()
+		},
+		shop: {
+			name: "Shop",
+			unl: _ => false,
+			update() {
+			}
+		},
+		communal: {
+			name: "Community",
+			unl: _ => false,
+			update() {
+			}
+		},
+		achs: {
+			name: "Achievements",
 			update() {
 			}
 		},
 		opt: {
 			name: "Options",
-			unl: () => true,
 			update() {
 			}
 		}

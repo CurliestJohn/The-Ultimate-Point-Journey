@@ -30,5 +30,3 @@ function toggleEl(id) {
 function isElShown(id) {
 	return el(id).style.display != "none"
 }
-
-// Currencies

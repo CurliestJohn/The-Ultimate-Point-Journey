@@ -9,17 +9,25 @@
 		<meta property="og:image" content="https://curliestjohn.github.io/The-Ultimate-Point-Journey/img/points.png"/>
 		<link rel="icon" href="img/points.png">
 
-		<script type="text/javascript" src="js/features/fragment.js"></script>
-
+		<!-- CORE -->
 		<script type="text/javascript" src="js/init.js"></script>
+		<script type="text/javascript" src="js/saving.js"></script>
 		<script type="text/javascript" src="js/element.js"></script>
-		<script type="text/javascript" src="js/resources.js"></script>
-		<script type="text/javascript" src="js/upgrades.js"></script>
-		<script type="text/javascript" src="js/tabs.js"></script>
-		<script type="text/javascript" src="js/pages.js"></script>
+
+		<!-- ELEMENTS -->
+		<script type="text/javascript" src="js/core/tabs.js"></script>
+		<script type="text/javascript" src="js/core/pages.js"></script>
+		<script type="text/javascript" src="js/core/resources.js"></script>
+		<script type="text/javascript" src="js/core/upgrades.js"></script>
+		<script type="text/javascript" src="js/core/achievements.js"></script>
+
+		<!-- GAME -->
+		<script type="text/javascript" src="js/features/fragment.js"></script>
+		<script type="text/javascript" src="js/features/chronics.js"></script>
 		<script type="text/javascript" src="js/game.js"></script>
 	</head>
 	<body onload="init()">
+		<input id="copy" style="position: absolute; top: 0; left: 0; user-select: all; visibility: hidden;">
 		<div id="loading">Loading...</div>
 		<div id="game" style='display: none'>
 			<!-- HEADER -->
@@ -32,6 +40,7 @@
 
 			<!-- TOP -->
 			<p style='font-size: 30px' id="curr_points"></p>
+			<span id="shatter_req"></span><br><br>
 			<div id="tab_btns"></div>
 
 			<!-- TABS -->
@@ -41,17 +50,61 @@
 				<button onclick="FRAGMENT.exchange()">6 Point Fragments to 2 Points</button>
 
 				<p id="curr_glass_fragments"></p>
-				<p id="curr_glass_flux"></p>
 
-				<button id="upg_f1" onclick="UPG_FEATURE.buy('f1')"></button><br>
-				<button id="upg_f2" onclick="UPG_FEATURE.buy('f2')"></button><br>
-				<button id="upg_f3" onclick="UPG_FEATURE.buy('f3')"></button>		
+				<div id="upgs_frag"></div>
 			</div>
-			<div id="tab_flux" style='display: none'>
-				Soon... Hint: Something to do with time.
+			<div id="tab_chronics" style='display: none'>
+				<p style='font-size: 24px' id="curr_chronite"></p>
+				<div id="unl_chronics">Gain Chronites to unlock.</div>
+				<div id="div_chronics" style='display:none'>
+					<button class="upg" id="ch_ability_0" onclick="CHRONICS.cast(0)">
+						<b>Shatter Points</b><br>
+						Shatter points!<br>
+						Cast: 1 Chronites
+					</button><br>
+					<button class="upg" id="ch_ability_1" onclick="CHRONICS.cast(1)">
+						<b>Warp Shatter</b><br>
+						Time warp to shatter!<br>
+						Cast: 2 Chronites
+					</button><br>
+					<button class="upg" id="ch_ability_2" onclick="CHRONICS.cast(2)">
+						<b>Slow Points</b><br>
+						Gain less Points until next shatter!<br>
+						Cast: 3 Chronites
+					</button><br><br>
+
+					<h1>Chronology</h1>
+					<table class='expanse'>
+						<td>
+							<h2>Passives</h2>
+							<div id="ch_passive"></div><br>
+						</td><td>
+							<h2 id="ch_episode"></h2>
+							(Gain 1 Perk per 3 Parts)<br><br>
+
+							<p id="curr_asc_perk"></p>
+							<div id="upgs_asc"></div>
+						</td><td>
+							<h2 id="ch_part"></h2>
+							<div id="upgs_new_part"></div>
+						</td>
+					</table>
+				</div>
+			</div>
+			<div id="tab_shop" style='display: none'>
+				Coming in v0.0.3...
+			</div>
+			<div id="tab_communal" style='display: none'>
+				Coming in v0.0.4...
+			</div>
+			<div id="tab_achs" style='display: none'>
+				<table id="achs"></table>
 			</div>
 			<div id="tab_opt" style='display: none'>
-				Soon...
+				<button onclick="SAVING.save()">Save</button>
+				<button onclick="SAVING.export_save()">Export</button>
+				<button onclick="SAVING.import_save()">Import</button>
+				<button onclick="SAVING.reset()">RESET</button>
 			</div>
 		</div>
 	</body>

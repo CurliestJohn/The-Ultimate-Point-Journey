@@ -9,7 +9,9 @@ let RESOURCES = {
 		},
 
 		production() {
-			return 0.1
+			let x = player.upgs.f4 ? 0.15 : 0.1
+			if (player.chronics.onUse.includes(2)) x /= 2
+			return x
 		}
 	},
 	point_fragments: {
@@ -25,24 +27,6 @@ let RESOURCES = {
 			return 0
 		}
 	},
-	glass_fragments: {
-		name: "Glasskites",
-		get amt() {
-			return player.fragments.glass
-		},
-		set amt(x) {
-			player.fragments.glass = x
-		}
-	},
-	glass_flux: {
-		name: "Glasskite Flux",
-		get amt() {
-			return player.fragments.flux
-		},
-		set amt(x) {
-			player.fragments.flux = x
-		}
-	},
 	shatter_luck: {
 		name: "Shatter Luck",
 		get amt() {
@@ -53,9 +37,50 @@ let RESOURCES = {
 		},
 
 		production() {
-			return temp.upgs.f2 * temp.upgs.f3
+			return temp.upgs.f2 * temp.upgs.f3 + temp.passive[1]
 		}
 	},
+	glass_fragments: {
+		name: "Glasskites",
+		get amt() {
+			return player.fragments.glass
+		},
+		set amt(x) {
+			player.fragments.glass = x
+		}
+	},
+
+	// Chronics
+	chronite: {
+		name: "Chronites",
+		color: "#b0f",
+		get amt() {
+			return player.chronics.flux
+		},
+		set amt(x) {
+			player.chronics.flux = x
+		}
+	},
+	asc_perk: {
+		name: "Ascensions",
+		color: "#b0f",
+		get amt() {
+			return Math.floor((temp.upgs.new_part + 1) / 3 - temp.upgs.a1)
+		},
+		set amt(x) {
+
+		}
+	},
+	/*asc_luck: {
+		name: "Ascensional Luck",
+		color: "#b0f",
+		get amt() {
+			return 1
+		},
+		set amt(x) {
+			
+		}
+	},*/
 }
 
 let RES_DISP = {
@@ -66,7 +91,7 @@ let RES_DISP = {
 		let prod = temp.production[i]
 		let frag = FRAGMENT.chances[i]
 
-		let h = `<b>${((RESOURCES[i].amt * 100) / 100).toFixed(2)}</b> ${RESOURCES[i].name}`
+		let h = `<b style='color: ${RESOURCES[i].color}'>${((RESOURCES[i].amt * 100) / 100).toFixed(2)}</b> ${RESOURCES[i].name}`
 		if (frag) h += ` (${Math.min(RESOURCES.shatter_luck.amt * 100 / frag, 100).toFixed(1)}%/shatter)`
 		if (prod > 0) h += ` (+${prod.toFixed(1)}/s)`
 

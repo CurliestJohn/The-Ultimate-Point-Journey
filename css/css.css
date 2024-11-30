@@ -15,7 +15,7 @@ button {
 	border-left: 2px solid white;
 	border-top: 0 solid;
 	border-bottom: 0 solid;
-	border-right: 2px solid white;
+	border-right: 0 solid;
 	border-radius: 4px;
 
 	cursor: pointer
@@ -28,6 +28,20 @@ a {
 
 hr {
 	border: 1px solid white;
+}
+
+h1 {
+	font-size: 30px
+}
+
+h2 {
+	font-size: 24px
+}
+
+.expanse td {
+	min-width: 400px;
+	max-width: 400px;
+	vertical-align: 0
 }
 
 /* HEADER */
@@ -52,22 +66,32 @@ hr {
 
 /* CURRENCIES */
 p {
+	padding: 0.25em;
 	& > span > b {
+		background: linear-gradient(90deg, #fff3, transparent);
+		border-radius: 4px;
+		border-left: 4px solid #fff7;
+		padding: 0.1em;
 		font-size: 1.5em
 	}
 	& > * {
-		font-size: 1em;
-		height: 1em
+		font-size: 1.25em;
+		height: 1.25em
 	}
 }
 
 /* UPGRADES */
 button.upg {
 	height: 120px;
-	width: 300px;
+	width: 240px;
 	&.locked {
 		border-color: #733;
 		background: linear-gradient(black, #300);
+		cursor: not-allowed
+	}
+	&.bought {
+		border-color: #3f3;
+		background: linear-gradient(black, #070);
 		cursor: not-allowed
 	}
 	& > b {
@@ -82,10 +106,21 @@ button.upg {
 #tab_btns {
 	& > * {
 		margin-top: 0;
+		border-radius: 4px 4px 0 0;
 	}
 	& > button.active {
 		padding-top: 12px;
 		background: white;
 		color: black
+	}
+}
+
+/* ACHIEVEMENTS */
+#achs {
+	& .clear {
+		background: linear-gradient(#0f07, transparent);
+		& * {
+			color: #bfb
+		}
 	}
 }
