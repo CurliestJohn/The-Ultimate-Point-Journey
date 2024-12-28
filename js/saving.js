@@ -5,11 +5,15 @@ let SAVING = {
 			points: 0,
 			upgs: {},
 			achs: [],
+			stats: {
+				time: 0,
+				best: 0
+			},
 
 			fragments: {
+				flavor_charge: "",
 				amt: 0,
-				luck: 0,
-				glass: 0
+				luck: 0
 			},
 			chronics: {
 				// Currencies

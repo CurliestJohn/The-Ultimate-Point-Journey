@@ -1,4 +1,5 @@
 function init() {
+	FRAGMENT.init()
 	TABS.init()
 	UPG_FEATURE.init()
 	ACH_FUNC.init()

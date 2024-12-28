@@ -9,8 +9,8 @@ let ACH = [
 		req: () => RESOURCES.glass_fragments.amt >= 1
 	}, {
 		title: "All Balanced Out.",
-		disp: "Reach more than 5 Points.",
-		req: () => RESOURCES.points.amt > 5
+		disp: "Reach more than 2 Points.",
+		req: () => RESOURCES.points.amt > 2
 	}, {
 		title: "Chronicle Capsules",
 		disp: "Reach Chronites.",
@@ -21,15 +21,23 @@ let ACH = [
 		req: () => temp.upgs.new_part >= 1
 	}, {
 		title: "Basics of Craziness",
-		disp: "Reach Plane 2.",
-		req: () => temp.upgs.new_part >= 2
+		disp: "Reach Plane 2. Reward: Unlock 'Shiny' Flavor in 'Fragments' tab.",
+		req: () => temp.plane >= 2
+	}, {
+		title: "Planes of Trinity",
+		disp: "Reach Plane 3.",
+		req: () => temp.plane >= 3
+	}, {
+		title: "Breaking the Fourth Wall",
+		disp: "Reach Plane 4.",
+		req: () => temp.plane >= 4
 	}
 ]
 
 let ACH_FUNC = {
 	init() {
 		let h = ``
-		for (var [i, j] of Object.entries(ACH)) h += `
+		for (let [i, j] of Object.entries(ACH)) h += `
 			<tr id="ach_${i}">
 				<td><img src="img/placeholder.png"></img></td>
 				<td>
@@ -41,7 +49,7 @@ let ACH_FUNC = {
 		setHTML("achs", h)
 	},
 	perSec() {
-		for (var [i, j] of Object.entries(ACH)) {
+		for (let [i, j] of Object.entries(ACH)) {
 			if (!player.achs.includes(i) && j.req()) player.achs.push(i)
 			setEl("ach_"+i, player.achs.includes(i) ? "clear" : "")
 		}

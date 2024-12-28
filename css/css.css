@@ -1,7 +1,7 @@
 *:not(h2) {
-	font-size: 16px;
+	font-size: 15px;
 	font-family: Helvetica;
-	color: white
+	color: #bbb
 }
 
 body {
@@ -11,14 +11,21 @@ body {
 button {
 	padding: 8px;
 	background: linear-gradient(black, #777);
-
-	border-left: 2px solid white;
-	border-top: 0 solid;
-	border-bottom: 0 solid;
-	border-right: 0 solid;
+	border: 0 solid;
 	border-radius: 4px;
 
-	cursor: pointer
+	cursor: pointer;
+
+	&.locked {
+		border-color: #733;
+		background: linear-gradient(black, #300);
+		cursor: not-allowed
+	}
+	&.bought {
+		border-color: #3f3;
+		background: linear-gradient(black, #070);
+		cursor: not-allowed
+	}
 }
 
 a {
@@ -31,11 +38,17 @@ hr {
 }
 
 h1 {
-	font-size: 30px
+	margin: 36px 0 0 0;
+	font-size: 27px;
+	text-decoration: underline;
+	color: white
 }
 
 h2 {
-	font-size: 24px
+	margin: 28px 0 0 0;
+	font-size: 21px;
+	text-decoration: underline;
+	color: white
 }
 
 .expanse td {
@@ -46,22 +59,34 @@ h2 {
 
 /* HEADER */
 #footer {
-	position: fixed;
+	position: absolute;
 	right: 8px;
 	top: 8px
 }
 
 #footer_box {
-	position: fixed;
+	position: absolute;
 	right: 8px;
 	top: 30px;
+}
 
-	width: 240px;
-	height: 300px;
+#footer_box_div {
+	width: 300px;
+	height: 600px;
 
 	overflow-y: auto;
 	background: black;
 	border: 2px solid white;
+
+	& > h2:first-child {
+		margin-top: 0
+	}
+}
+
+#footer_box_close {
+	position: absolute;
+	top: 0;
+	right: 100%
 }
 
 /* CURRENCIES */
@@ -84,16 +109,6 @@ p {
 button.upg {
 	height: 120px;
 	width: 240px;
-	&.locked {
-		border-color: #733;
-		background: linear-gradient(black, #300);
-		cursor: not-allowed
-	}
-	&.bought {
-		border-color: #3f3;
-		background: linear-gradient(black, #070);
-		cursor: not-allowed
-	}
 	& > b {
 		font-size: 1.25em
 	}
@@ -106,6 +121,7 @@ button.upg {
 #tab_btns {
 	& > * {
 		margin-top: 0;
+		border-left: 2px solid white;
 		border-radius: 4px 4px 0 0;
 	}
 	& > button.active {

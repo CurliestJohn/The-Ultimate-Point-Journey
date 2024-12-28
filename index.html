@@ -5,7 +5,7 @@
 
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://curliestjohn.github.io/The-Ultimate-Point-Journey/"/>
-		<meta property="og:title" content="Ultimate Point Journey" />
+		<meta property="og:title" content="The Ultimate Point Journey v0.02"/>
 		<meta property="og:image" content="https://curliestjohn.github.io/The-Ultimate-Point-Journey/img/points.png"/>
 		<link rel="icon" href="img/points.png">
 
@@ -31,11 +31,15 @@
 		<div id="loading">Loading...</div>
 		<div id="game" style='display: none'>
 			<!-- HEADER -->
-			<div id="footer_box" style='display: none'></div>
+			<div id="footer_box" style='display: none'>
+				<button id="footer_box_close" onclick="PAGES.close('footer_box')">X</button>
+				<div id="footer_box_div"></div>
+			</div>
 			<div id="footer">
-				<a href="https://github.com/CurliestJohn/The-Ultimate-Point-Journey" target="_newtab">Repo</a> |
 				<a onclick="PAGES.open('footer_box', 'help')">Help</a> |
-				<a onclick="PAGES.open('footer_box', 'changelog')">Changelog</a>
+				<a onclick="PAGES.open('footer_box', 'changelog')">Changelog</a> |||
+				<a href="https://github.com/CurliestJohn/The-Ultimate-Point-Journey" target="_newtab">Repo</a> |
+				<a href="https://aarextiaokhiao.github.io/chat.html" target="_newtab">Aarex's Chat</a>
 			</div>
 
 			<!-- TOP -->
@@ -49,8 +53,12 @@
 				<p id="curr_point_fragments"></p>
 				<button onclick="FRAGMENT.exchange()">6 Point Fragments to 2 Points</button>
 
+				<h1>Inventory</h1>
 				<p id="curr_glass_fragments"></p>
 
+				<table id="flavors"></table>
+
+				<h1>Upgrades</h1>
 				<div id="upgs_frag"></div>
 			</div>
 			<div id="tab_chronics" style='display: none'>
@@ -60,18 +68,23 @@
 					<button class="upg" id="ch_ability_0" onclick="CHRONICS.cast(0)">
 						<b>Shatter Points</b><br>
 						Shatter points!<br>
-						Cast: 1 Chronites
+						Cast: 3 Chronites
 					</button><br>
 					<button class="upg" id="ch_ability_1" onclick="CHRONICS.cast(1)">
 						<b>Warp Shatter</b><br>
 						Time warp to shatter!<br>
-						Cast: 2 Chronites
+						Cast: 4 Chronites
 					</button><br>
 					<button class="upg" id="ch_ability_2" onclick="CHRONICS.cast(2)">
 						<b>Slow Points</b><br>
 						Gain less Points until next shatter!<br>
-						Cast: 3 Chronites
-					</button><br><br>
+						Cast: 5 Chronites
+					</button><br>
+					<button class="upg" id="ch_speedup" onclick="CHRONICS.toggleSpeed()">
+						<b>Speedup</b><br>
+						Consume Chronites to speed up!<br>
+						Cast: 1 Chronites/s
+					</button><br>
 
 					<h1>Chronology</h1>
 					<table class='expanse'>
@@ -97,10 +110,15 @@
 			<div id="tab_communal" style='display: none'>
 				Coming in v0.0.4...
 			</div>
+
 			<div id="tab_achs" style='display: none'>
 				<table id="achs"></table>
 			</div>
+			<div id="tab_stats" style='display: none'>
+				
+			</div>
 			<div id="tab_opt" style='display: none'>
+				<h2>💾 Saving</h2>
 				<button onclick="SAVING.save()">Save</button>
 				<button onclick="SAVING.export_save()">Export</button>
 				<button onclick="SAVING.import_save()">Import</button>

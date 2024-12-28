@@ -37,16 +37,7 @@ let RESOURCES = {
 		},
 
 		production() {
-			return temp.upgs.f2 * temp.upgs.f3 + temp.passive[1]
-		}
-	},
-	glass_fragments: {
-		name: "Glasskites",
-		get amt() {
-			return player.fragments.glass
-		},
-		set amt(x) {
-			player.fragments.glass = x
+			return (temp.upgs.f2 * temp.upgs.f3 + temp.passive[1])
 		}
 	},
 
@@ -58,38 +49,32 @@ let RESOURCES = {
 			return player.chronics.flux
 		},
 		set amt(x) {
-			player.chronics.flux = x
+			player.chronics.flux = Math.max(x, 0)
+		},
+
+		production() {
+			return player.chronics.speed ? -1 : 0
 		}
 	},
 	asc_perk: {
 		name: "Ascensions",
 		color: "#b0f",
 		get amt() {
-			return Math.floor((temp.upgs.new_part + 1) / 3 - temp.upgs.a1)
+			return Math.floor((temp.plane - 1) * (player.upgs.f7 ? 1.5 : 1) - temp.upgs.a1 - temp.upgs.a2 * 1.5)
 		},
 		set amt(x) {
 
 		}
 	},
-	/*asc_luck: {
-		name: "Ascensional Luck",
-		color: "#b0f",
-		get amt() {
-			return 1
-		},
-		set amt(x) {
-			
-		}
-	},*/
 }
 
 let RES_DISP = {
 	init() {
-		for (var i in RESOURCES) setHTML("curr_" + i, `<img src="img/${i}.png"></img> <span id='curr_inner_${i}'></span>`)
+		for (let i in RESOURCES) setHTML("curr_" + i, `<img src="img/${i}.png"></img> <span id='curr_inner_${i}'></span>`)
 	},
 	update(i) {
 		let prod = temp.production[i]
-		let frag = FRAGMENT.chances[i]
+		let frag = temp.frag.chance[i]
 
 		let h = `<b style='color: ${RESOURCES[i].color}'>${((RESOURCES[i].amt * 100) / 100).toFixed(2)}</b> ${RESOURCES[i].name}`
 		if (frag) h += ` (${Math.min(RESOURCES.shatter_luck.amt * 100 / frag, 100).toFixed(1)}%/shatter)`

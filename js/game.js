@@ -4,8 +4,25 @@ let player = SAVING.get_new_save()
 
 /* TICKS */
 function game_tick(dt) {
+	player.stats.time += dt
+
+	//Handle Speedup
+	if (player.chronics.speed) {
+		let max = Math.min(RESOURCES.chronite.amt, dt)
+		if (max == RESOURCES.chronite.amt) {
+			RESOURCES.chronite.amt = 0
+			player.chronics.speed  = !player.chronics.speed
+		}
+
+		RESOURCES.points.amt          += temp.production.points       * max
+		RESOURCES.points.shatter_luck += temp.production.shatter_luck * max
+	}
+
 	//Gain all currencies
-	for (var [i, j] of Object.entries(RESOURCES)) j.amt += temp.production[i] * dt
+	for (let [i, j] of Object.entries(RESOURCES)) j.amt += temp.production[i] * dt
+
+	//Features
+	player.stats.best = Math.max(player.stats.best, Math.min(RESOURCES.points.amt, FRAGMENT.reqToShatter()))
 	FRAGMENT.tick()
 }
 
@@ -18,13 +35,12 @@ function html_tick() {
 
 function temp_tick() {
 	UPG_FEATURE.update()
-	CHRONICS.updateTemp()
+	CHRONICS.temp()
 
 	temp.production = {}
-	for (var [i, j] of Object.entries(RESOURCES)) temp.production[i] = j.production !== undefined ? j.production() : 0
+	for (let [i, j] of Object.entries(RESOURCES)) temp.production[i] = j.production !== undefined ? j.production() : 0
 
-	temp.frag_mult = {}
-	for (var [i, j] of Object.entries(FRAGMENT.mult)) temp.frag_mult[i] = j()
+	FRAGMENT.temp()
 }
 
 function general_tick() {

@@ -2,8 +2,8 @@ let UPGRADES = {
 	f1: {
 		desc: "Increase points needed to shatter.",
 
-		effect: (lvl) => lvl + 1,
-		effect_disp: (i) => i.toFixed(0),
+		effect: (lvl) => lvl / 2 + 1,
+		effect_disp: (i) => i.toFixed(1),
 		cost: (lvl) => (2 ** lvl) * 5,
 		cost_res: "point_fragments"
 	},
@@ -12,47 +12,46 @@ let UPGRADES = {
 
 		effect: (lvl) => lvl * 0.1,
 		effect_disp: (i) => i.toFixed(1) + "/s",
-		cost: (lvl) => (3 ** lvl) * 10,
+		cost: (lvl) => (10 ** lvl) * 10,
 		cost_res: "point_fragments"
 	},
 	f3: {
 		desc: "Gain more Shatter Luck.",
 
-		effect: (lvl) => lvl * 0.5 + 1,
+		effect: (lvl) => lvl / 2 + 1,
 		effect_disp: (i) => i.toFixed(1) + "x",
-		cost: (lvl) => (3 ** lvl) * 2,
+		cost: (lvl) => 5 ** lvl,
 		cost_res: "glass_fragments"
 	},
 	f4: {
-		desc: "Gain 1.5x more Points.",
+		desc: "1.5x Points gain.",
 
-		cost: (lvl) => 5,
+		cost: (lvl) => 2.5,
 		once: true,
 		cost_res: "points"
 	},
 	f5: {
-		desc: "Gain more Chronites.",
+		desc: "1.5x Chronites gain.",
 
-		effect: (lvl) => lvl / 2 + 1,
-		effect_disp: (i) => i.toFixed(1) + "x",
-		cost: (lvl) => (5 ** lvl) * 50,
+		cost: (lvl) => 50,
+		once: true,
 		cost_res: "glass_fragments"
 	},
 	f6: {
-		desc: "Unlock Flavors.",
+		desc: "Ability to speedup in Chronics.",
 
-		cost: (lvl) => 5,
+		unl: _ => FRAGMENT.groups.shiny.unl(),
+		cost: (lvl) => 1,
 		once: true,
-		cost_res: "points"
+		cost_res: "shiny_pure"
 	},
 	f7: {
-		desc: "Bank Points per Shatter.",
+		desc: "1.5x total Ascensions.",
 
-		effect: (lvl) => lvl,
-		effect_disp: (i) => "+" + i + "/shatter",
-		cost: (lvl) => 100,
+		unl: _ => FRAGMENT.groups.shiny.unl(),
+		cost: (lvl) => 10,
 		once: true,
-		cost_res: "points"
+		cost_res: "shiny_pure"
 	},
 
 	new_part: {
@@ -60,7 +59,7 @@ let UPGRADES = {
 
 		effect: (lvl) => lvl,
 		effect_disp: (i) => `Did ${i} total parts!`,
-		cost: (lvl) => (2 + lvl) ** 2,
+		cost: (lvl) => (1.5 + lvl) ** 3,
 		cost_res: "chronite"
 	},
 	a1: {
@@ -70,12 +69,21 @@ let UPGRADES = {
 		effect_disp: (i) => `+${i} point threshold`,
 		cost: (lvl) => 1,
 		cost_res: "asc_perk"
+	},
+	a2: {
+		desc: "Ascend: Shiny",
+
+		unl: _ => FRAGMENT.groups.shiny.unl(),
+		effect: (lvl) => lvl / 2 + 1,
+		effect_disp: (i) => `+${(i * 100 - 100).toFixed(0)}% luck to Shiny.`,
+		cost: (lvl) => 1.5,
+		cost_res: "asc_perk"
 	}
 }
 
 let UPG_GROUP = {
-	frag: ["f1", "f2", "f3", "f4", "f5"],
-	asc: ["a1"],
+	frag: ["f1", "f2", "f3", "f4", "f5", "f6", "f7"],
+	asc: ["a1", "a2"],
 	new_part: ["new_part"]
 }
 
@@ -94,22 +102,26 @@ let UPG_FEATURE = {
 
 	//HTML
 	init() {
-		for (var [i, j] of Object.entries(UPG_GROUP)) {
+		for (let [i, j] of Object.entries(UPG_GROUP)) {
 			let h = ``
-			for (var k of j) h += `<button id="upg_${k}" onclick="UPG_FEATURE.buy('${k}')"></button><br>`
+			for (let k of j) h += `<button id="upg_${k}" onclick="UPG_FEATURE.buy('${k}')"></button><br>`
 
 			setHTML("upgs_" + i, h)
 		}
 	},
 	update() {
 		let upg_t = temp.upgs = {}
-		for (var [i, j] of Object.entries(UPGRADES)) if (j.effect !== undefined) upg_t[i] = j.effect(player.upgs[i] || 0)
+		for (let [i, j] of Object.entries(UPGRADES)) if (j.effect !== undefined) upg_t[i] = j.effect(player.upgs[i] || 0)
 	},
 	dispGroup(i) {
-		for (var k of UPG_GROUP[i]) UPG_FEATURE.disp(k)
+		for (let k of UPG_GROUP[i]) UPG_FEATURE.disp(k)
 	},
 	disp(i) {
 		let upg = UPGRADES[i]
+		let unl = upg.unl !== undefined ? upg.unl() : true
+		switchEl("upg_" + i, unl)
+
+		if (!unl) return
 		let cost = upg.cost(player.upgs[i] || 0)
 		let max = upg.once && player.upgs[i] != undefined
 		
