@@ -5,15 +5,20 @@ Will you get enough points to reach the endgame?
 [Play!](https://curliestjohn.github.io/The-Ultimate-Point-Journey/)
 
 # Current endgame:
-* IDK points
+* Plane 10
 
-# Current version: Indev v0.0.2 • Build 9
-Indev v0.0.2 • Build 9 // Released on December 27th, 2024
+# Current version: Indev v0.0.2 • Build 10
+Indev v0.0.2 • Build 10 // Released on January 25th, 2026
 
-# What's new on Indev v0.0.2 • Build 9:
+# What's new on Indev v0.0.2 • Build 10:
 Check the changelog at the bottom-right corner!
-- 🌈 Flavors! (Unlocks at Plane 2)
 - 💥 Rebalancing!
+- ⏰️ Chronics rework!
+- 🖼️ Improvements!
+- ⚠️ Notifications!
+- ❓️ More help!
+- 👁️ Achievement icons!
+- 🔧 Fixes!
 
 # Credits:
 * [CurliestJohn](https://github.com/CurliestJohn) (owner)

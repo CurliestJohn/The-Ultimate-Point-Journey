@@ -2,7 +2,7 @@ let FRAGMENT = {
 	// Data
 	types: {
 		glass_fragments: {
-			name:   "Glasskites",
+			name:   "Remnants",
 			old_id: "glass",
 			chance: 10,
 			mult:   () => 1
@@ -10,8 +10,8 @@ let FRAGMENT = {
 		chronite: {
 			name:   "Chronites",
 			color:  "#b0f",
-			chance: 200,
-			mult:   () => player.upgs.f5 ? 1.5 : 1
+			chance: 100,
+			mult:   () => player.upgs.f5 ? .75 : .5
 		},
 		shiny_pure: {
 			name:   "Purified Fragments",
@@ -29,7 +29,7 @@ let FRAGMENT = {
 	groups: {
 		shiny: {
 			name:       "Shiny",
-			unl:        () => temp.plane >= 2,
+			unl:        () => player.chronics.plane >= 2,
 			group_luck: () => temp.upgs.a2 ?? 1,
 			res:        ["shiny_pure"/*, "shiny_radiant"*/]
 		}
@@ -37,7 +37,7 @@ let FRAGMENT = {
 
 	// Calculations
 	reqToShatter() {
-		return temp.upgs.f1 + temp.upgs.a1 + temp.passive[0]
+		return temp.upgs.f1 + temp.upgs.a1
 	},
 
 	// Functions
@@ -63,9 +63,11 @@ let FRAGMENT = {
 		}
 
 		// Resets!
-		RESOURCES.shatter_luck.amt = 0
-		RESOURCES.points.amt = reset ? 0 : RESOURCES.points.amt - amt * req
-		player.chronics.onUse = []
+		RESOURCES.shatter_luck.amt = temp.upgs.f6
+		if (reset) {
+			RESOURCES.points.amt -= amt * req
+			player.chronics.onUse = []
+		}
 	},
 
 	//Misc
@@ -122,7 +124,7 @@ let FRAGMENT = {
 		var point_floor = Math.floor(RESOURCES.points.amt / this.reqToShatter())
 		if (point_floor == 0) return
 
-		this.shatter(point_floor, false)
+		this.shatter(point_floor, true)
 	},
 	html() {
 		RES_DISP.update("point_fragments")

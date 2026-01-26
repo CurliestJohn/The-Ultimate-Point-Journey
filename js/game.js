@@ -35,7 +35,6 @@ function html_tick() {
 
 function temp_tick() {
 	UPG_FEATURE.update()
-	CHRONICS.temp()
 
 	temp.production = {}
 	for (let [i, j] of Object.entries(RESOURCES)) temp.production[i] = j.production !== undefined ? j.production() : 0

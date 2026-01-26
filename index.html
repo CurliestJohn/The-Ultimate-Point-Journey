@@ -17,6 +17,7 @@
 		<!-- ELEMENTS -->
 		<script type="text/javascript" src="js/core/tabs.js"></script>
 		<script type="text/javascript" src="js/core/pages.js"></script>
+		<script type="text/javascript" src="js/core/notify.js"></script>
 		<script type="text/javascript" src="js/core/resources.js"></script>
 		<script type="text/javascript" src="js/core/upgrades.js"></script>
 		<script type="text/javascript" src="js/core/achievements.js"></script>
@@ -27,7 +28,9 @@
 		<script type="text/javascript" src="js/game.js"></script>
 	</head>
 	<body onload="init()">
+		<!-- TECHNICAL -->
 		<input id="copy" style="position: absolute; top: 0; left: 0; user-select: all; visibility: hidden;">
+
 		<div id="loading">Loading...</div>
 		<div id="game" style='display: none'>
 			<!-- HEADER -->
@@ -40,6 +43,11 @@
 				<a onclick="PAGES.open('footer_box', 'changelog')">Changelog</a> |||
 				<a href="https://github.com/CurliestJohn/The-Ultimate-Point-Journey" target="_newtab">Repo</a> |
 				<a href="https://aarextiaokhiao.github.io/chat.html" target="_newtab">Aarex's Chat</a>
+			</div>
+
+			<!-- FOOTER -->
+			<div id="notify_box" style='display: none'>
+				Game saved!
 			</div>
 
 			<!-- TOP -->
@@ -66,42 +74,21 @@
 				<div id="unl_chronics">Gain Chronites to unlock.</div>
 				<div id="div_chronics" style='display:none'>
 					<button class="upg" id="ch_ability_0" onclick="CHRONICS.cast(0)">
-						<b>Shatter Points</b><br>
-						Shatter points!<br>
+						Shatter without resetting Points!<br>
 						Cast: 3 Chronites
 					</button><br>
 					<button class="upg" id="ch_ability_1" onclick="CHRONICS.cast(1)">
-						<b>Warp Shatter</b><br>
-						Time warp to shatter!<br>
+						Speed up by 1.5x!<br>
 						Cast: 4 Chronites
 					</button><br>
 					<button class="upg" id="ch_ability_2" onclick="CHRONICS.cast(2)">
-						<b>Slow Points</b><br>
-						Gain less Points until next shatter!<br>
+						Ascend to next Plane!<br>
 						Cast: 5 Chronites
 					</button><br>
-					<button class="upg" id="ch_speedup" onclick="CHRONICS.toggleSpeed()">
-						<b>Speedup</b><br>
-						Consume Chronites to speed up!<br>
-						Cast: 1 Chronites/s
-					</button><br>
 
-					<h1>Chronology</h1>
-					<table class='expanse'>
-						<td>
-							<h2>Passives</h2>
-							<div id="ch_passive"></div><br>
-						</td><td>
-							<h2 id="ch_episode"></h2>
-							(Gain 1 Perk per 3 Parts)<br><br>
-
-							<p id="curr_asc_perk"></p>
-							<div id="upgs_asc"></div>
-						</td><td>
-							<h2 id="ch_part"></h2>
-							<div id="upgs_new_part"></div>
-						</td>
-					</table>
+					<h2 id="ch_episode"></h2>
+					<p id="curr_asc_perk"></p>
+					<div id="upgs_asc"></div>
 				</div>
 			</div>
 			<div id="tab_shop" style='display: none'>
@@ -119,7 +106,7 @@
 			</div>
 			<div id="tab_opt" style='display: none'>
 				<h2>💾 Saving</h2>
-				<button onclick="SAVING.save()">Save</button>
+				<button onclick="SAVING.save(true)">Save</button>
 				<button onclick="SAVING.export_save()">Export</button>
 				<button onclick="SAVING.import_save()">Import</button>
 				<button onclick="SAVING.reset()">RESET</button>

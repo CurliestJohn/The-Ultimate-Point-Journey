@@ -5,12 +5,12 @@ let RESOURCES = {
 			return player.points
 		},
 		set amt(x) {
-			player.points = x
+			player.points = Math.max(x, 0)
 		},
 
 		production() {
-			let x = player.upgs.f4 ? 0.15 : 0.1
-			if (player.chronics.onUse.includes(2)) x /= 2
+			let x = 0.1
+			if (player.chronics.onUse.includes(1)) x *= 1.5
 			return x
 		}
 	},
@@ -21,10 +21,6 @@ let RESOURCES = {
 		},
 		set amt(x) {
 			player.fragments.amt = x
-		},
-
-		production() {
-			return 0
 		}
 	},
 	shatter_luck: {
@@ -33,12 +29,17 @@ let RESOURCES = {
 			return player.fragments.luck
 		},
 		set amt(x) {
-			player.fragments.luck = x
+			player.fragments.luck = Math.min(x, this.cap)
 		},
 
 		production() {
-			return (temp.upgs.f2 * temp.upgs.f3 + temp.passive[1])
-		}
+			let x = temp.upgs.f2 * temp.upgs.f3
+			if (player.chronics.onUse.includes(1)) x *= 1.5
+			return x
+		},
+		get cap() {
+			return 20 + temp.upgs.a2
+		},
 	},
 
 	// Chronics
@@ -51,19 +52,15 @@ let RESOURCES = {
 		set amt(x) {
 			player.chronics.flux = Math.max(x, 0)
 		},
-
-		production() {
-			return player.chronics.speed ? -1 : 0
-		}
 	},
 	asc_perk: {
 		name: "Ascensions",
 		color: "#b0f",
 		get amt() {
-			return Math.floor((temp.plane - 1) * (player.upgs.f7 ? 1.5 : 1) - temp.upgs.a1 - temp.upgs.a2 * 1.5)
+			return player.chronics.ascends
 		},
 		set amt(x) {
-
+			player.chronics.ascends = x
 		}
 	},
 }
@@ -76,9 +73,12 @@ let RES_DISP = {
 		let prod = temp.production[i]
 		let frag = temp.frag.chance[i]
 
-		let h = `<b style='color: ${RESOURCES[i].color}'>${((RESOURCES[i].amt * 100) / 100).toFixed(2)}</b> ${RESOURCES[i].name}`
+		let h = `<b style='color: ${RESOURCES[i].color}'>${Math.floor(RESOURCES[i].amt * 100) / 100}</b>`
+		if (RESOURCES[i].cap > 0) h += ` / ${RESOURCES[i].cap}`
+
+		h += ` ${RESOURCES[i].name}`
 		if (frag) h += ` (${Math.min(RESOURCES.shatter_luck.amt * 100 / frag, 100).toFixed(1)}%/shatter)`
-		if (prod > 0) h += ` (+${prod.toFixed(1)}/s)`
+		if (prod > 0) h += ` (+${Math.floor(prod * 100) / 100}/s)`
 
 		setHTML("curr_inner_" + i, h)
 	}

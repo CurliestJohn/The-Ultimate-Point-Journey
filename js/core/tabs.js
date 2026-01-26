@@ -52,7 +52,7 @@
 				setHTML("tab_stats", `
 					You played for ${player.stats.time.toFixed(1)} seconds.<br>
 					You made a best of ${player.stats.best.toFixed(1)} Points.<br>
-					Points will passively shatter every ${(FRAGMENT.reqToShatter() / temp.production.points).toFixed(1)} seconds.<br><br>
+					Points will shatter every ${(FRAGMENT.reqToShatter() / temp.production.points).toFixed(1)} seconds.<br><br>
 
 					If every Point Fragment was the size of a glass fragment, you could have enough fragments to make ${(RESOURCES.point_fragments.amt / 1e3).toFixed(2)} Windows.
 				`)
